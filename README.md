@@ -60,8 +60,7 @@
 <summary><b>🖥 На своём ПК</b></summary>
 
 ```bash
-python encrypt_assets.py   # подготовить ассеты (один раз)
-./gradlew assembleRelease  # собрать APK
+./gradlew assembleRelease
 ```
 
 Готовый файл: <code>app/build/outputs/apk/release/…-release.apk</code>
