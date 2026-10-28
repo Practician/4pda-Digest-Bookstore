@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark"
+    tools:context=".MainActivity">
+
+    <!-- Основной WebView – 4pda_digest_mobile.html -->
+    <WebView
+        android:id="@+id/webViewParser"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" />
+
+    <!-- Контейнер встроенного браузера форума 4PDA (для авторизации и просмотра тем) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/forumTopBar"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:background="#0F172A"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btnForumBackToDigest"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:background="#4F46E5"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="← В сборщик дайджеста"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvForumUrl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="https://4pda.to/forum/"
+                android:textColor="#94A3B8"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <WebView
+            android:id="@+id/webViewForum"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- FAB для открытия логов (как в Bookstore) -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabLogToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="72dp"
+        android:contentDescription="Логи"
+        android:src="@android:drawable/ic_menu_info_details" />
+
+    <!-- Панель логов (overlay, по умолчанию скрыта) -->
+    <LinearLayout
+        android:id="@+id/logPanel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EE0B0F19"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#1E293B"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Логи приложения"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnCopyLog"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:background="#4F46E5"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Копировать"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnClearLog"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="6dp"
+                android:background="#334155"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Очистить"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnCloseLog"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="6dp"
+                android:background="#334155"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="✕"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/logScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/logTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:padding="8dp"
+                android:textColor="#E2E8F0"
+                android:textSize="11sp" />
+        </ScrollView>
+    </LinearLayout>
+
+</FrameLayout>
